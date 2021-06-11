@@ -10,6 +10,11 @@
       "StackName": "amplify-degreeseeapp-dev-122011",
       "StackId": "arn:aws:cloudformation:us-east-1:290358531753:stack/amplify-degreeseeapp-dev-122011/1f8305e0-ca10-11eb-80ba-0e3b177c99d5",
       "AmplifyAppId": "dr5nfdsgnjsft"
+    },
+    "categories": {
+      "auth": {
+        "degreeseeappd0fdca15": {}
+      }
     }
   }
 }

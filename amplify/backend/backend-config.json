@@ -1,1 +1,10 @@
-{}
+{
+  "auth": {
+    "degreeseeappd0fdca15": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
