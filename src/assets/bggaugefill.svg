@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="466px" height="919px" viewBox="0 0 466 919" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="466" height="919"></rect>
+        <linearGradient x1="54.4636917%" y1="-14.4759912%" x2="42.3649291%" y2="171.636002%" id="linearGradient-3">
+            <stop stop-color="#FFFCFA" offset="0%"></stop>
+            <stop stop-color="#FF9956" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="55.289503%" y1="-14.0973508%" x2="40.8090802%" y2="172.838441%" id="linearGradient-4">
+            <stop stop-color="#FF9956" offset="0%"></stop>
+            <stop stop-color="#E05900" offset="100%"></stop>
+        </linearGradient>
+        <path d="M310.325256,82.256939 C609.972376,-90.7444064 996.661597,18.0156016 1173.99962,325.174076 C1351.33765,632.33255 1252.19111,1021.56274 952.543994,1194.56409 C934.929602,1204.73376 917.014434,1213.9298 898.858695,1222.16913 L898.093026,1226 C926.251249,1086.15387 913.571247,969.884667 860.053019,877.192405 C782.706678,743.230435 666.150948,803.999555 585.941464,684.257218 L568.979876,654.879551 C505.384597,525.550577 616.289167,454.999376 538.94365,321.038832 C485.916391,229.196918 392.79676,160.50134 259.584757,114.952098 C275.789992,103.343032 292.711219,92.4264075 310.325256,82.256939 Z M225.548885,141.150671 C212.803656,152.45262 200.305596,163.701232 188.054702,174.896506 C197.941247,165.220206 208.199399,155.850237 218.821012,146.799452 Z" id="path-5"></path>
+        <filter x="-1.4%" y="-3.2%" width="104.1%" height="105.5%" filterUnits="objectBoundingBox" id="filter-6">
+            <feMorphology radius="2.5" operator="erode" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="-9" dy="-2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="13.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.867838542   0 0 0 0 0.465543413   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Log-In-+-Dashboard-App-View" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-974.000000, -105.000000)">
+            <g id="Group" transform="translate(974.000000, 105.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill-opacity="0" fill="#FFFFFF" xlink:href="#path-1"></use>
+                <g mask="url(#mask-2)">
+                    <g transform="translate(-461.000000, -273.000000)">
+                        <path d="M368.302972,88.2601478 C667.950092,-84.7411975 1054.63931,24.0188105 1231.97734,331.177285 C1409.31537,638.335759 1310.16883,1027.56595 1010.52171,1200.56729 C924.0264,1250.50538 830.278481,1276.96627 736.406742,1281.95499 L736.395843,1281.95809 C786.4752,1267.37639 838.368058,1250.79325 892.074419,1232.20868 L892.074419,1232.20868 L891.473,1231.167 L892.140055,1227.8149 C919.208099,1089.83405 906.250598,974.960954 853.267552,883.195614 C775.925069,749.240325 659.377107,809.996703 579.167998,690.278341 L562.190161,660.874118 C498.604071,531.550643 609.501978,460.999602 532.158183,327.042041 C485.06514,245.478042 406.351001,182.169699 296.015766,137.11701 L296.000536,137.102404 C318.608982,119.369874 342.725546,103.027282 368.302972,88.2601478 Z" id="Combined-Shape-Copy" fill="url(#linearGradient-3)" fill-rule="evenodd"></path>
+                        <g id="Combined-Shape" fill="none">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                            <use fill="url(#linearGradient-4)" fill-rule="evenodd" xlink:href="#path-5"></use>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
