@@ -1,0 +1,42 @@
+{
+  "paths": [
+    {
+      "name": "/dashboards",
+      "lambdaFunction": "dashLambda",
+      "privacy": {
+        "private": true,
+        "auth": [
+          "/POST",
+          "/GET",
+          "/PUT",
+          "/PATCH",
+          "/DELETE"
+        ]
+      },
+      "policyResourceName": "/dashboards"
+    }
+  ],
+  "resourceName": "dashApi",
+  "apiName": "dashApi",
+  "functionArns": [
+    {
+      "lambdaFunction": "dashLambda"
+    }
+  ],
+  "privacy": {
+    "auth": 1,
+    "unauth": 0,
+    "authRoleName": "amplify-degreeseeapp-dev-122011-authRole",
+    "unAuthRoleName": "amplify-degreeseeapp-dev-122011-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "dashLambda",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

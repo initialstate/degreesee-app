@@ -1,0 +1,249 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Lambda Function resource stack creation using Amplify CLI",
+    "Parameters": {
+        "CloudWatchRule": {
+            "Type": "String",
+            "Default" : "NONE",
+            "Description" : " Schedule Expression"
+        },
+        "deploymentBucketName": {
+            "Type": "String"
+        },
+        "env": {
+            "Type": "String"
+        },
+        "s3Key": {
+            "Type": "String"
+        },
+    
+    
+    
+        "storagedashTableName": {
+            "Type": "String",
+            "Default": "storagedashTableName"
+            },
+        
+        "storagedashTableArn": {
+            "Type": "String",
+            "Default": "storagedashTableArn"
+            },
+        
+    
+        
+    
+        "authdegreeseeappd0fdca15UserPoolId": {
+            "Type": "String",
+            "Default": "authdegreeseeappd0fdca15UserPoolId"
+            },
+        
+    
+        
+    
+        "storagedashTableName": {
+            "Type": "String",
+            "Default": "storagedashTableName"
+            },
+        
+        "storagedashTableArn": {
+            "Type": "String",
+            "Default": "storagedashTableArn"
+            },
+        
+    
+        
+    
+        "functiondashLambdaName": {
+            "Type": "String",
+            "Default": "functiondashLambdaName"
+            },
+        
+    
+        
+    
+        "apidashApiApiName": {
+            "Type": "String",
+            "Default": "apidashApiApiName"
+            },
+        
+        "apidashApiApiId": {
+            "Type": "String",
+            "Default": "apidashApiApiId"
+            }
+        
+    
+        
+    
+    },
+    "Conditions": {
+        "ShouldNotCreateEnvResources": {
+            "Fn::Equals": [
+                {
+                    "Ref": "env"
+                },
+                "NONE"
+            ]
+        }
+    },
+    "Resources": {
+        "LambdaFunction": {
+          "Type": "AWS::Lambda::Function",
+          "Metadata": {
+            "aws:asset:path": "./src",
+            "aws:asset:property": "Code"
+          },
+          "Properties": {
+            "Code": {
+                "S3Bucket": {
+                    "Ref": "deploymentBucketName"
+                },
+                "S3Key": {
+                    "Ref": "s3Key"
+                }
+            },
+            "Handler": "index.handler",
+            "FunctionName": {
+                "Fn::If": [
+                    "ShouldNotCreateEnvResources",
+                    "userLambda",
+                    {
+
+                        "Fn::Join": [
+                            "",
+                            [
+                                "userLambda",
+                                "-",
+                                {
+                                    "Ref": "env"
+                                }
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "Environment": {
+                "Variables" : {"ENV":{"Ref":"env"},"REGION":{"Ref":"AWS::Region"},"AUTH_DEGREESEEAPPD0FDCA15_USERPOOLID":{"Ref":"authdegreeseeappd0fdca15UserPoolId"},"STORAGE_DASHTABLE_NAME":{"Ref":"storagedashTableName"},"STORAGE_DASHTABLE_ARN":{"Ref":"storagedashTableArn"},"FUNCTION_DASHLAMBDA_NAME":{"Ref":"functiondashLambdaName"},"API_DASHAPI_APINAME":{"Ref":"apidashApiApiName"},"API_DASHAPI_APIID":{"Ref":"apidashApiApiId"}}
+            },
+            "Role": { "Fn::GetAtt": ["LambdaExecutionRole", "Arn"] },
+            "Runtime": "nodejs14.x",
+            "Layers": [],
+            "Timeout": "25"
+          }
+        },
+        "LambdaExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "RoleName": {
+                    "Fn::If": [
+                        "ShouldNotCreateEnvResources",
+                        "degreeseeappLambdaRolef14518ad",
+                        {
+
+                            "Fn::Join": [
+                                "",
+                                [
+                                    "degreeseeappLambdaRolef14518ad",
+                                    "-",
+                                    {
+                                        "Ref": "env"
+                                    }
+                                ]
+                            ]
+                        }
+                    ]
+                },
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "lambda.amazonaws.com"
+                                ]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+        ,"lambdaexecutionpolicy": {
+            "DependsOn": ["LambdaExecutionRole"],
+            "Type": "AWS::IAM::Policy",
+            "Properties": {
+                "PolicyName": "lambda-execution-policy",
+                "Roles": [{ "Ref": "LambdaExecutionRole" }],
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Action": ["logs:CreateLogGroup",
+                            "logs:CreateLogStream",
+                            "logs:PutLogEvents"],
+                            "Resource": { "Fn::Sub": [ "arn:aws:logs:${region}:${account}:log-group:/aws/lambda/${lambda}:log-stream:*", { "region": {"Ref": "AWS::Region"}, "account": {"Ref": "AWS::AccountId"}, "lambda": {"Ref": "LambdaFunction"}} ]}
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Action": ["dynamodb:DescribeTable","dynamodb:GetItem","dynamodb:Query","dynamodb:Scan","dynamodb:PutItem","dynamodb:UpdateItem","dynamodb:DeleteItem"],
+                            "Resource": [
+                            
+                                { "Ref": "storagedashTableArn" },
+                                {
+                                    "Fn::Join": [
+                                        "/",
+                                        [
+                                            { "Ref": "storagedashTableArn" },
+                                            "index/*"
+                                        ]
+                                    ]
+                                }
+                            
+                            ]
+                        }
+                        
+                    ]
+                }
+            }
+        }
+        ,"AmplifyResourcesPolicy": {
+            "DependsOn": ["LambdaExecutionRole"],
+            "Type": "AWS::IAM::Policy",
+            "Properties": {
+                "PolicyName": "amplify-lambda-execution-policy",
+                "Roles": [{ "Ref": "LambdaExecutionRole" }],
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [{"Effect":"Allow","Action":["cognito-identity:Describe*","cognito-identity:Get*","cognito-identity:List*","cognito-idp:Describe*","cognito-idp:AdminGetDevice","cognito-idp:AdminGetUser","cognito-idp:AdminList*","cognito-idp:List*","cognito-sync:Describe*","cognito-sync:Get*","cognito-sync:List*","iam:ListOpenIdConnectProviders","iam:ListRoles","sns:ListPlatformApplications"],"Resource":[{"Fn::Join":["",["arn:aws:cognito-idp:",{"Ref":"AWS::Region"},":",{"Ref":"AWS::AccountId"},":userpool/",{"Ref":"authdegreeseeappd0fdca15UserPoolId"}]]}]},{"Effect":"Allow","Action":["dynamodb:Put*","dynamodb:Create*","dynamodb:BatchWriteItem","dynamodb:Get*","dynamodb:BatchGetItem","dynamodb:List*","dynamodb:Describe*","dynamodb:Scan","dynamodb:Query"],"Resource":[{"Ref":"storagedashTableArn"},{"Fn::Join":["/",[{"Ref":"storagedashTableArn"},"index/*"]]}]},{"Effect":"Allow","Action":["lambda:Get*","lambda:List*","lambda:Invoke*"],"Resource":[{"Fn::Join":["",["arn:aws:lambda:",{"Ref":"AWS::Region"},":",{"Ref":"AWS::AccountId"},":function:",{"Ref":"functiondashLambdaName"}]]}]},{"Effect":"Allow","Action":["apigateway:GET","apigateway:HEAD","apigateway:OPTIONS"],"Resource":[{"Fn::Join":["",["arn:aws:apigateway:",{"Ref":"AWS::Region"},"::/restapis/",{"Ref":"apidashApiApiName"},"/*"]]}]}]
+                }
+            }
+        }
+        
+        
+        
+    },
+    "Outputs": {
+        "Name": {
+            "Value": {
+                "Ref": "LambdaFunction"
+            }
+        },
+        "Arn": {
+            "Value": {"Fn::GetAtt": ["LambdaFunction", "Arn"]}
+        },
+        "Region": {
+            "Value": {
+                "Ref": "AWS::Region"
+            }
+        },
+        "LambdaExecutionRole": {
+            "Value": {
+                "Ref": "LambdaExecutionRole"
+            }
+        }
+        
+    }
+}

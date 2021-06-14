@@ -1,0 +1,7 @@
+{
+    "tableName": "dashTable",
+    "partitionKeyName": "userId",
+    "partitionKeyType": "S",
+    "sortKeyName": "dashId",
+    "sortKeyType": "S"
+}
