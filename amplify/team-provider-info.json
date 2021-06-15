@@ -14,6 +14,16 @@
     "categories": {
       "auth": {
         "degreeseeappd0fdca15": {}
+      },
+      "function": {
+        "addUserLambda": {
+          "deploymentBucketName": "amplify-degreeseeapp-dev-122011-deployment",
+          "s3Key": "amplify-builds/addUserLambda-5a4f31316c48484f7766-build.zip"
+        },
+        "dashboardLambda": {
+          "deploymentBucketName": "amplify-degreeseeapp-dev-122011-deployment",
+          "s3Key": "amplify-builds/dashboardLambda-6c74746e42792f32334d-build.zip"
+        }
       }
     }
   }
