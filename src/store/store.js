@@ -52,7 +52,7 @@ const actions = {
   setDashboards: ({ commit }) => {
     console.log({ msg: 'store.js setDashboards action' });
 
-    API.get('dashApi', '/dashboards', {
+    API.get('dashboardApi', '/dashboards', {
       response: true
     }).then(result => {
       console.log({ dashResult: result.data });
@@ -79,7 +79,7 @@ const actions = {
       return new Error('Invalid Entry');
     }
 
-    API.post('dashApi', '/dashboards', {
+    API.post('dashboardApi', '/dashboards', {
       body: {
         key: dash.bucketId,
         name: dash.name
@@ -106,7 +106,7 @@ const actions = {
     const path = '/dashboards' + `/${dashId}`;
     console.log({ path: path });
 
-    API.del('dashApi', path, {
+    API.del('dashboardApi', path, {
       body: {
         dashId: dashId
       }
