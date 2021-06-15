@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "auth": {
+      "degreeseeappd0fdca15": [
+        "read"
+      ]
+    },
+    "storage": {
+      "dashboardTable": [
+        "create",
+        "read"
+      ]
+    },
+    "function": {
+      "dashboardLambda": [
+        "read"
+      ]
+    },
+    "api": {
+      "dashboardApi": [
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
