@@ -1,5 +1,5 @@
 {
-    "tableName": "dashTable",
+    "tableName": "dashboardTable",
     "partitionKeyName": "userId",
     "partitionKeyType": "S",
     "sortKeyName": "dashId",

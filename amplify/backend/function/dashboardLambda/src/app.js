@@ -16,7 +16,7 @@ AWS.config.update({ region: process.env.TABLE_REGION });
 
 const dynamo = new AWS.DynamoDB.DocumentClient();
 
-let tableName = 'dashTable';
+let tableName = 'dashboardTable';
 if (process.env.ENV && process.env.ENV !== 'NONE') {
   tableName = tableName + '-' + process.env.ENV;
 }

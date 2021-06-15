@@ -19,14 +19,14 @@
     
     
     
-        "storagedashTableName": {
+        "storagedashboardTableName": {
             "Type": "String",
-            "Default": "storagedashTableName"
+            "Default": "storagedashboardTableName"
             },
         
-        "storagedashTableArn": {
+        "storagedashboardTableArn": {
             "Type": "String",
-            "Default": "storagedashTableArn"
+            "Default": "storagedashboardTableArn"
             }
         
     
@@ -63,13 +63,13 @@
             "FunctionName": {
                 "Fn::If": [
                     "ShouldNotCreateEnvResources",
-                    "dashLambda",
+                    "dashboardLambda",
                     {
 
                         "Fn::Join": [
                             "",
                             [
-                                "dashLambda",
+                                "dashboardLambda",
                                 "-",
                                 {
                                     "Ref": "env"
@@ -94,13 +94,13 @@
                 "RoleName": {
                     "Fn::If": [
                         "ShouldNotCreateEnvResources",
-                        "degreeseeappLambdaRole8cae9e2d",
+                        "degreeseeappLambdaRole0d981d15",
                         {
 
                             "Fn::Join": [
                                 "",
                                 [
-                                    "degreeseeappLambdaRole8cae9e2d",
+                                    "degreeseeappLambdaRole0d981d15",
                                     "-",
                                     {
                                         "Ref": "env"
@@ -149,12 +149,12 @@
                             "Action": ["dynamodb:DescribeTable","dynamodb:GetItem","dynamodb:Query","dynamodb:Scan","dynamodb:PutItem","dynamodb:UpdateItem","dynamodb:DeleteItem"],
                             "Resource": [
                             
-                                { "Ref": "storagedashTableArn" },
+                                { "Ref": "storagedashboardTableArn" },
                                 {
                                     "Fn::Join": [
                                         "/",
                                         [
-                                            { "Ref": "storagedashTableArn" },
+                                            { "Ref": "storagedashboardTableArn" },
                                             "index/*"
                                         ]
                                     ]

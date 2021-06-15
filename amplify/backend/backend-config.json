@@ -8,20 +8,20 @@
     }
   },
   "storage": {
-    "dashTable": {
+    "dashboardTable": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     }
   },
   "function": {
-    "dashLambda": {
+    "dashboardLambda": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": [
         {
           "category": "storage",
-          "resourceName": "dashTable",
+          "resourceName": "dashboardTable",
           "attributes": [
             "Name",
             "Arn"
@@ -30,67 +30,18 @@
             "Name": "TABLE_NAME",
             "Arn": "TABLE_ARN"
           }
-        }
-      ]
-    },
-    "userLambda": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "dashTable",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        },
-        {
-          "category": "auth",
-          "resourceName": "degreeseeappd0fdca15",
-          "attributes": [
-            "UserPoolId"
-          ]
-        },
-        {
-          "category": "storage",
-          "resourceName": "dashTable",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "dashLambda",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "api",
-          "resourceName": "dashApi",
-          "attributes": [
-            "ApiName",
-            "ApiId"
-          ]
         }
       ]
     }
   },
   "api": {
-    "dashApi": {
+    "dashboardApi": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "dashLambda",
+          "resourceName": "dashboardLambda",
           "attributes": [
             "Name",
             "Arn"

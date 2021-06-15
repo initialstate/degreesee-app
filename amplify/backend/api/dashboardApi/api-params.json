@@ -2,7 +2,7 @@
   "paths": [
     {
       "name": "/dashboards",
-      "lambdaFunction": "dashLambda",
+      "lambdaFunction": "dashboardLambda",
       "privacy": {
         "private": true,
         "auth": [
@@ -16,11 +16,11 @@
       "policyResourceName": "/dashboards"
     }
   ],
-  "resourceName": "dashApi",
-  "apiName": "dashApi",
+  "resourceName": "dashboardApi",
+  "apiName": "dashboardApi",
   "functionArns": [
     {
-      "lambdaFunction": "dashLambda"
+      "lambdaFunction": "dashboardLambda"
     }
   ],
   "privacy": {
@@ -32,7 +32,7 @@
   "dependsOn": [
     {
       "category": "function",
-      "resourceName": "dashLambda",
+      "resourceName": "dashboardLambda",
       "attributes": [
         "Name",
         "Arn"
