@@ -18,11 +18,11 @@
       "function": {
         "addUserLambda": {
           "deploymentBucketName": "amplify-degreeseeapp-dev-122011-deployment",
-          "s3Key": "amplify-builds/addUserLambda-5a4f31316c48484f7766-build.zip"
+          "s3Key": "amplify-builds/addUserLambda-756b39302f34744f7541-build.zip"
         },
         "dashboardLambda": {
           "deploymentBucketName": "amplify-degreeseeapp-dev-122011-deployment",
-          "s3Key": "amplify-builds/dashboardLambda-6c74746e42792f32334d-build.zip"
+          "s3Key": "amplify-builds/dashboardLambda-54707669526f3865464b-build.zip"
         }
       }
     }
