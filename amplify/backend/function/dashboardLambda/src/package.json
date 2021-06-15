@@ -7,9 +7,9 @@
     "aws-sdk": "^2.845.0",
     "aws-serverless-express": "^3.3.5",
     "body-parser": "^1.17.1",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "uuid": "^3.3.2"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
