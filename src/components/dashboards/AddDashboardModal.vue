@@ -33,11 +33,6 @@ export default {
       this.$emit('input', !this.value);
     }
   },
-  computed: {
-    // dashKey() {
-    //   return this.$store.getters.dashKey;
-    // }
-  },
   components: {
     AddDashboardForm: AddDashboardForm
   }
@@ -56,8 +51,3 @@ export default {
   padding: 0;
 }
 </style>
-
-    <!-- <button @click='showModal = true' class='button' id='show-modal'> Add Dashboard </button>
-    <modal v-if='showModal' @close='showModal = false'>
-      <h3 slot='add-dashboard'>name: 'dash name input goes here'</h3>
-    </modal> -->

@@ -29,7 +29,6 @@ const getters = {
     return state.dashName;
   },
   dashboards: state => {
-    console.log('getting dashboards');
     return state.dashboards;
   },
   user: state => {
@@ -50,32 +49,23 @@ const actions = {
     commit('SET_DASH_NAME', name);
   },
   setDashboards: ({ commit }) => {
-    console.log({ msg: 'store.js setDashboards action' });
-
     API.get('dashboardApi', '/dashboards', {
       response: true
     }).then(result => {
-      console.log({ dashResult: result.data });
       if (result.data) {
         const dashboards = result.data.data;
-        console.log({ function: 'store_actions_setDashboards', dashboards: dashboards });
         commit('SET_DASHBOARDS', dashboards);
         return dashboards;
       }
     }).catch(err => {
-      console.log('Oh my, an unfortunate event has occured: ', err);
       return err;
     });
   },
   setUser: ({ commit }, user) => {
-    console.log('setting_user');
     commit('SET_USER', user);
   },
   addDashboard: ({ commit }, dash) => {
-    console.log('addDashboardDashKey: ', dash);
-
     if (!dash) {
-      console.log('missing data');
       return new Error('Invalid Entry');
     }
 
@@ -86,25 +76,19 @@ const actions = {
       }
     })
       .then(result => {
-        console.log({ postDashResult: result });
-
         commit('ADD_DASHBOARD', result.dashboard);
 
         return 'success';
       }).catch(err => {
-        console.log('Shoot, I\'m unable to add that... ', err);
         return err;
       });
   },
   deleteDashboard: ({ commit }, dashId) => {
     if (!dashId) {
-      console.log('missing data');
       return Promise.reject(new Error('Invalid ID'));
     }
-    console.log('deleteDashboard func ', dashId);
 
     const path = '/dashboards' + `/${dashId}`;
-    console.log({ path: path });
 
     API.del('dashboardApi', path, {
       body: {
@@ -112,14 +96,10 @@ const actions = {
       }
     })
       .then(result => {
-        console.log({ deleteResult: result });
-        console.log({ _dashId: dashId });
-
         commit('REMOVE_DASHBOARD_BY_ID', dashId);
 
         return 'success';
       }).catch(err => {
-        console.log('Oh my, I may have failed to delete that... ', err);
         return err;
       });
   },
@@ -146,8 +126,6 @@ const mutations = {
     if (!dash) {
       return new Error('Invalid Entry');
     }
-    console.log('ADD_DASHBOARD func: ', dash);
-
     state.dashboards.push(dash);
   },
   REMOVE_DASHBOARD_BY_ID: (state, dashId) => {
@@ -156,14 +134,11 @@ const mutations = {
     }
     const idx = state.dashboards.findIndex(x => dashId !== null && x.dashId === dashId);
 
-    console.log({ dashId: dashId, index: idx });
-
     if (idx >= 0) {
       state.dashboards.splice(idx, 1);
     }
   },
   RESET: (state) => {
-    console.log('reset people...');
     Object.assign(state, getInitialState());
   }
 };

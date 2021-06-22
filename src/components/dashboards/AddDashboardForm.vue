@@ -32,8 +32,6 @@ export default {
       name: '',
       keyRules: [
         v => !!v || 'key is required'
-        // TODO: will all bucket invites start with bkt_ ??
-        // v => v.startsWith('bkt_') === true || "key must start with 'bkt_'"
       ],
       nameRules: [v => !!v || 'name is required'],
       valid: false
@@ -41,13 +39,11 @@ export default {
   },
   methods: {
     addDashboard (key, name) {
-      console.log('addDashboard func');
       const dash = {
         bucketId: key,
         name: name
       };
       this.$store.dispatch('addDashboard', dash);
-      console.log('resetting form');
       this.$refs.form.reset();
     }
   }

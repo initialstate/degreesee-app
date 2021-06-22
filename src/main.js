@@ -18,7 +18,6 @@ new Vue({
   store,
   vuetify,
   created: () => {
-    console.log('running created() setDashboards from main.js');
     store.dispatch('setDashboards');
   },
   render: h => h(App)

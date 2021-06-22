@@ -17,7 +17,6 @@ export default {
     dashId: {
       type: String,
       required: true
-      // default: 'bkt_b9z08ka2ytmut'
     },
     type: {
       type: String,
@@ -26,10 +25,7 @@ export default {
   },
   computed: {
     dashData () {
-      // console.log('dashId: ', this.dashId);
-      // console.log('dashId: ', this.type);
       const link = 'https://iot.app.initialstate.com/embed/#/' + this.type + '/' + this.dashId;
-      // console.log('link: ', link);
       return link;
     }
   }

@@ -43,4 +43,5 @@ export default {
   align-items: center;
   height: 90vh;
 }
+
 </style>

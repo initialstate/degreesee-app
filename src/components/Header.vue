@@ -42,18 +42,15 @@ export default {
   created () {
     onAuthUIStateChange((authState) => {
       this.authState = authState;
-      console.log({ authState: authState });
     });
   },
   beforeCreate () {
     Auth.currentAuthenticatedUser()
       .then((data) => {
-        console.log('header beforeCreate: signedIn = true');
         this.signedIn = true;
         this.user = data;
       })
       .catch(() => {
-        console.log('header beforeCreate: signedIn = false');
         this.signedIn = false;
       });
   }

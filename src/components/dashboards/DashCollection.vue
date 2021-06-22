@@ -69,7 +69,6 @@
                     @click='deleteDashboard(dashboard.dashId)'
                   >
                     <v-icon id='delete-btn' right>delete_forever</v-icon>
-                    <!-- <delete-dashboard-modal v-model='deleteModalOpen'></delete-dashboard-modal> -->
                   </v-btn>
                 </v-card-actions>
               </v-card>
@@ -82,18 +81,14 @@
 </template>
 
 <script>
-// import { API } from 'aws-amplify';
 import { mapState } from 'vuex';
 import AddDashboardModal from '@/components/dashboards/AddDashboardModal.vue';
 
 export default {
   name: 'DashCollection',
-  // properties in data are only reactive if they existed when instance was created
   data () {
     return {
-      // set initial dashboard property that will change later
       modalOpen: false
-      // dashCollection: []
       
     };
   },
@@ -110,7 +105,6 @@ export default {
     ...mapState({
       
       dashboards (state) {
-        console.log('dashboards: ', state.dashboards);
         const dashboards = state.dashboards;
         return dashboards;
       }
