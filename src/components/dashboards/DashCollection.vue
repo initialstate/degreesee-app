@@ -139,7 +139,6 @@ body { padding: 1rem; }
   text-decoration: none;
   display: inline-block;
   margin: 4px 2px;
-
 }
 
 </style>

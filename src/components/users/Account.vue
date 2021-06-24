@@ -22,7 +22,9 @@ export default {
         this.user = user;
         this.email = user.attributes.email;
       })
-      .catch(() => console.log('user is not signed in...'));
+      .catch((err) => {
+        return err;
+      });
   }
 };
 </script>

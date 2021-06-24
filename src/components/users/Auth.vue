@@ -63,7 +63,6 @@ amplify-authenticator {
   justify-content: center;
   align-items: center;
   flex: 1;
-  padding: 20px;
   z-index: 1;
 }
 
