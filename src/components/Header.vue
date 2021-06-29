@@ -1,7 +1,7 @@
 <!-- eslint-disable -->
 <template>
 <div>
-    <v-app-bar v-if="windowWidth > 701" prominent dense app class="primary">
+    <v-app-bar v-show="windowWidth => 700" prominent dense app class="primary">
           <v-container v-resize="onResize" class="d-flex align-center justify-space-between" fluid>      
           <v-img
             src="images/degreesee-logo-long.svg"
@@ -24,7 +24,7 @@
       </v-container>
   </v-app-bar>
 
-  <v-app-bar v-else-if="windowWidth < 700" prominent app class="primary" height="200">
+  <v-app-bar v-show="windowWidth < 700" prominent app class="primary" height="200">
       <v-container v-resize="onResize" class="d-flex flex-column align-center">
           <v-img
           mb-4
