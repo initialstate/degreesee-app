@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class='account'>
     <h1>Account</h1>
     <h3>Welcome, {{email}} </h3>
   </div>
@@ -28,3 +28,13 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .account {
+    text-align: center;
+  }
+
+  h3 {
+    padding-top: 10px;
+  }
+</style>
