@@ -63,6 +63,12 @@ body {
   background-size: contain;
 }
 
+@media only screen and (max-width: 490px) {
+  #app {
+    background-size: cover;
+  }
+}
+
 h1, h2, h3, p, label, input {
   font-family: 'Montserrat';
 }

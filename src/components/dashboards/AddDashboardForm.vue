@@ -1,7 +1,9 @@
+<!-- eslint-disable -->
 <template>
   <div>
     <v-container class='form-body'>
-      <v-form id='add-dashboard-form' v-model='valid' ref="form" lazy-validation>
+      <v-form 
+      id='add-dashboard-form' v-model='valid' ref="form" lazy-validation>
         <v-text-field
         v-model='key'
         label='dashboard key'

@@ -1,6 +1,6 @@
 <template>
   <div id='dash-collection-container'>
-    <v-container id=dashboard-grid-container class='dash-collection' ma-7>
+    <v-container id=dashboard-grid-container class='dash-collection' mt-7>
       <v-row>
         <v-col>
           <v-row class= "pl-5 pb-5">
@@ -118,9 +118,9 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang='css' scoped>
+<style scoped>
 
-body { padding: 1rem; }
+/* body { padding: 1rem; } */
 
 #dashboard-card-container {
   min-width: 300px;

@@ -52,18 +52,17 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
 .auth {
   margin: 0 auto;
-  width: 460px;
+  max-width: 460px;
 }
 
 amplify-authenticator {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  z-index: 1;
+  --container-align: flex-start;
+  --container-height: 0;
+    padding: 2em;
 }
 
 </style>

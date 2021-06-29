@@ -1,50 +1,78 @@
+<!-- eslint-disable -->
 <template>
-  <v-app-bar prominent dense app class="primary">
-    <v-container  class="d-flex align-center" fluid>
-      <v-layout justify-left>
+<div>
+    <v-app-bar v-if="windowWidth > 701" prominent dense app class="primary">
+          <v-container v-resize="onResize" class="d-flex align-center justify-space-between" fluid>      
           <v-img
-            src="../assets/degreesee-desktop.svg"
+            src="images/degreesee-logo-long.svg"
             alt="DegreeSee Logo"
+            class='desktop-logo'
+            min-width="250"
             max-width="300"
-            class='logo'
           ></v-img>
-      </v-layout>
-      <v-spacer></v-spacer>
-      <v-layout class='routing' justify-end>
-        <router-link to='/dashboards'>
+        <v-layout class='routing' align-center justify-end md="6">
+          <router-link to='/dashboards'>
           <v-btn class='button' color='white' text>DASHBOARDS</v-btn>
         </router-link>
-        <router-link to='/account'>
+          <router-link to='/account'>
           <v-btn class='button' color='white' text>ACCOUNT</v-btn>
         </router-link>
+       <div v-if="authState === 'signedin' || signedIn === true" text class="signout">
+        <amplify-sign-out></amplify-sign-out>
+       </div>
       </v-layout>
+      </v-container>
+  </v-app-bar>
+
+  <v-app-bar v-else-if="windowWidth < 700" prominent app class="primary" height="200">
+      <v-container v-resize="onResize" class="d-flex flex-column align-center">
+          <v-img
+          mb-4
+            src="images/degreesee-logo-short.svg"
+            alt="DegreeSee Logo"
+            class='mobile-logo'
+          ></v-img>
+          <router-link to='/dashboards'>
+          <v-btn class='button' color='white' text>DASHBOARDS</v-btn>
+        </router-link>
+          <router-link to='/account'>
+          <v-btn class='button' color='white' text>ACCOUNT</v-btn>
+        </router-link>
       <div v-if="authState === 'signedin' || signedIn === true" text class="signout">
         <amplify-sign-out></amplify-sign-out>
       </div>
     </v-container>
   </v-app-bar>
+</div>
 </template>
 
 <script>
-import { Auth } from 'aws-amplify';
-import { onAuthUIStateChange } from '@aws-amplify/ui-components';
+/* eslint-disable */
+import { Auth } from "aws-amplify";
+import { onAuthUIStateChange } from "@aws-amplify/ui-components";
 
 export default {
-  name: 'NavBar',
+  name: "NavBar",
   data: () => ({
-    logoIcon: '@/assets/degreesee-logo-icon.png',
-    logoName: '@/assets/degreesee-logo-name.png',
-    link: 'https://www.degreesee.com',
+    logoIcon: "@/assets/degreesee-logo-icon.png",
+    logoName: "@/assets/degreesee-logo-name.png",
+    link: "https://www.degreesee.com",
     user: undefined,
     signedIn: undefined,
-    authState: undefined
+    authState: undefined,
+    windowWidth: 0,
   }),
-  created () {
+  methods: {
+    onResize() {
+      this.windowWidth = window.innerWidth;
+    },
+  },
+  created() {
     onAuthUIStateChange((authState) => {
       this.authState = authState;
     });
   },
-  beforeCreate () {
+  beforeCreate() {
     Auth.currentAuthenticatedUser()
       .then((data) => {
         this.signedIn = true;
@@ -53,12 +81,15 @@ export default {
       .catch(() => {
         this.signedIn = false;
       });
-  }
+  },
+  mounted() {
+    console.log(this.$vuetify.breakpoint);
+    this.onResize();
+  },
 };
 </script>
 
 <style scoped>
-
 .button {
   float: right;
   color: white;
@@ -68,6 +99,15 @@ export default {
 
 button:active {
   outline-width: 1;
-  outline-color:white;
+  outline-color: white;
 }
+
+/* @media only screen and (max-width: 671px) {
+  .mobile-logo {
+    display: block;
+  }
+  .desktop-logo {
+    display: none;
+  } 
+} */
 </style>
