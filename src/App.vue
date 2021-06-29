@@ -61,6 +61,7 @@ body {
   background-repeat: no-repeat;
   background-position: 100% 0;
   background-size: contain;
+  overflow: scroll;
 }
 
 @media only screen and (max-width: 490px) {
