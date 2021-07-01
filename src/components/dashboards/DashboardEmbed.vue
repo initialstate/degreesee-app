@@ -46,6 +46,7 @@ export default {
   justify-content: center;
   align-items: center;
   z-index: 1;
+  margin: 0 auto;
 }
 
 iframe {
