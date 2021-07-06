@@ -4,7 +4,7 @@
     <v-app-bar v-if="windowWidth >= 700" prominent dense app class="primary">
       <v-container v-resize="onResize" class="d-flex align-center justify-space-between" fluid>      
         <v-img
-          src="images/degreesee-logo-long.svg"
+          src="/images/degreesee-logo-long.svg"
           alt="DegreeSee Logo"
           class='desktop-logo'
           min-width="250"
@@ -28,7 +28,7 @@
       <v-container v-resize="onResize" class="d-flex flex-column align-center">
         <v-img
           mb-4
-          src="images/degreesee-logo-short.svg"
+          src="/images/degreesee-logo-short.svg"
           alt="DegreeSee Logo"
           class='mobile-logo'
         ></v-img>
