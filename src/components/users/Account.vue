@@ -32,9 +32,7 @@ export default {
 <style scoped>
   .account {
     text-align: center;
+    padding-top: 60px;
   }
 
-  h3 {
-    padding-top: 10px;
-  }
 </style>
