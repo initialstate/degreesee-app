@@ -43,7 +43,7 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
-    path: '*',
+    path: '/:catchAll(.*)',
     alias: '/404',
     name: 'NotFound',
     component: NotFound
@@ -51,7 +51,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: '',
   base: process.env.BASE_URL,
   routes
 });
