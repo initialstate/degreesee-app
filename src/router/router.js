@@ -43,7 +43,7 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
-    path: '/:catchAll(.*)',
+    path: '/:notFound(.*)',
     alias: '/404',
     name: 'NotFound',
     component: NotFound
