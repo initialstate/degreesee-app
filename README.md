@@ -1,5 +1,7 @@
 # degreesee-app
 
+![repo linter workflow](https://github.com/initialstate/degreesee-app/actions/workflows/is-repo-lint.yml/badge.svg)
+
 ## Project setup
 ```
 npm install
