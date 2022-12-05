@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: daily
+      interval: monthly
     labels:
       - "gh-actions"
       - "dependencies"
@@ -15,7 +15,7 @@ updates:
   - package-ecosystem: npm
     directory: /
     schedule:
-      interval: weekly
+      interval: monthly
     labels:
       - "npm"
       - "dependencies"
